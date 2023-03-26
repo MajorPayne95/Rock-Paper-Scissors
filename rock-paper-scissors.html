@@ -9,9 +9,28 @@
 <body>
     <script>
         // Rock Papaer Scissors Game
+        
+        // Gives choice of Rock
+        let rock = "rock"
+        // Gives choice of Paper
+        let paper = "paper"
+        // Gives choice of Scissors
+        let scissors = "scissors"
 
         // Make functions that randomly selects CPU choice
-            // Give choice of Rock
+        function cpuChoice () {
+            // Puts all choices into an array for random selection algorithm to be used
+            let cpuOptions = [rock, paper, scissors];
+            // Algorithm that finds a random index of any array using its length as the ceiling value to be multiplied to
+            let cpuRandom = Math.floor((Math.random() * cpuOptions.length));
+            // Sets the variable cpuDicision to the data at the index number found in cpuOptions array calculated from cpuRandom calculation
+            let cpuDecision = cpuOptions[cpuRandom];
+            //returns cpu decision
+            return cpuDecision;
+        }
+        // Verifies cpuChoice is working correctly
+        console.log(cpuChoice());
+
             // Give choice of Paper
             // Give choice of Scissors
             // Select random choice between the three variables
