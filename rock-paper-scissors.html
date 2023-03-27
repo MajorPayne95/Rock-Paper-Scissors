@@ -28,21 +28,23 @@
         for (let i = 0; i < 1; i++) {
             // If input is identical to rock, prints to console
             if (lowerUserChoice === rock) {
-                console.log("User choice is: " + lowerUserChoice);
+                //console.log("User choice is: " + lowerUserChoice);
             // If input is identical to paper, prints to console
             } else if (lowerUserChoice === paper) {
-                console.log("User choice is: " + lowerUserChoice);
+                //console.log("User choice is: " + lowerUserChoice);
             // If input is identical to scissors, prints to console
             } else if (lowerUserChoice === scissors) {
-                console.log("User choice is: " + lowerUserChoice);
+                //console.log("User choice is: " + lowerUserChoice);
             // If input is not identical to rock, paper, or scissors user is reprompted to enter a valid choice
             } else {
                 lowerUserChoice = prompt("Invalid entry!  Try again");
                 i--; // This sets the value of i in the for loop to -1, so when it i++ it still remains < 1.  This lets the loop repeat until a valid choice is entered.
             }
         }
-        
 
+        let validUserInput = lowerUserChoice;
+        console.log("The valid user input is: "+ validUserInput);
+        
         // Make functions that randomly selects CPU choice
         function cpuChoice () {
             // Puts all choices into an array for random selection algorithm to be used
@@ -55,14 +57,20 @@
             return cpuDecision;
         }
         // Verifies cpuChoice is working correctly
-        console.log(cpuChoice());
-        
-        // Make function that prompts user to input choice
-            // Convert input to allLowerCase
-            // If Rock, return rock
-            // if paper return paper
-            // if scissors return scissors
-            // if anything else, return "Invalid option"
+        console.log("The CPU choice is " + cpuChoice());
+
+        function playRound (validUserInput, cpuChoice) {
+            let tie;
+            let winner;
+
+            if (validUserInput == cpuChoice) {
+                return tie = "It's a tie!" 
+            } else {
+                if ()
+            }
+        }
+
+        console.log(playRound(validUserInput, cpuChoice));
 
         // Compare CPU choise to user input
             // If CPU === input return "Tie"
