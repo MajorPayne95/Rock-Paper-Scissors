@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, Paper, Scissors</title>
 </head>
 <body>
     <script>
@@ -16,11 +16,13 @@
         let paper = "paper"
         // Gives choice of Scissors
         let scissors = "scissors"
+        // Gives game result options
         let tie = "It's a tie!";
         let youWin = "You win!";
         let cpuWin = "You lose!";
-        let userScore = parseInt(0);
-        let computerScore = parseInt(0);
+        // Variables to store both the player and CPU score during game
+        let userScore = 0;
+        let computerScore = 0;
 
         function playerChoice() {
             // Gives prompt for user to input their choice
@@ -68,14 +70,17 @@
 
             //console.log(playerHand + " " + cpuHand)
 
+            // Runs through all the possible input combinations to determine winner
             if (playerHand === cpuHand) {
                 return tie;
             } else {
                 if (playerHand === rock) {
                     if (cpuHand === paper) {
+                        // Increases CPU score by 1
                         computerScore++
                         return cpuWin
                     } else {
+                        // Increases players score by 1
                         userScore++
                         return youWin
                     }
@@ -99,16 +104,24 @@
             }
         }
 
-        // Compare CPU choise to user input
+        // Loop to run through 5 positive rounds of the game
         for (let i = 0; i < 5; i++) {
+            // Runs the cpuChoice function
             const cpuHand = cpuChoice();
+            // Runs the playerChoice function
             const playerHand = playerChoice();
+            // Sets condition for tie games
             if (playerHand === cpuHand) {
+                // Alerts player the round was a tie
                 alert("Tie round!")
+                // This lowers i loop by 1 for a net gain of +0 on tie games.  This lets the loop repeat until a sum of 5 wins/losses is recorded
                 i--
             } else {
+                // Prints out the results of the round
                 console.log(playRound(playerHand, cpuHand));
+                // Prints out the players score
                 console.log("your score = " + userScore);
+                // Prints out the CPU score
                 console.log("Computer's score = " + computerScore);
             }
         }
