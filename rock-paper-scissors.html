@@ -16,6 +16,11 @@
         let paper = "paper"
         // Gives choice of Scissors
         let scissors = "scissors"
+        let tie = "It's a tie!";
+        let youWin = "You win!";
+        let cpuWin = "You lose!";
+        let userScore = parseInt(0);
+        let computerScore = parseInt(0);
 
         function playerChoice() {
             // Gives prompt for user to input their choice
@@ -24,7 +29,7 @@
             let lowerUserChoice = userChoice.toLowerCase();
 
             // Creates loop to iterate through prompt inputs to ensure they are valid for rock paper scissors
-            for (let i = 0; i < 1; i++) {
+            for (let j = 0; j < 1; j++) {
                 // If input is identical to rock, prints to console
                 if (lowerUserChoice === rock) {
                 //console.log("User choice is: " + lowerUserChoice);
@@ -33,14 +38,14 @@
                 //console.log("User choice is: " + lowerUserChoice);
                 // If input is identical to scissors, prints to console
                 } else if (lowerUserChoice === scissors) {
-                    //console.log("User choice is: " + lowerUserChoice);
+                //console.log("User choice is: " + lowerUserChoice);
                 // If input is not identical to rock, paper, or scissors user is reprompted to enter a valid choice
                 } else {
                    lowerUserChoice = prompt("Invalid entry!  Try again");
-                    i--; // This sets the value of i in the for loop to -1, so when it i++ it still remains < 1.  This lets the loop repeat until a valid choice is entered.
+                    j--; // This sets the value of i in the for loop to -1, so when it i++ it still remains < 1.  This lets the loop repeat until a valid choice is entered.
                 }
             }
-            console.log("The valid user input is: "+ lowerUserChoice);
+            //console.log("The valid user input is: "+ lowerUserChoice);
             return lowerUserChoice;
         }  
         
@@ -53,57 +58,61 @@
             // Sets the variable cpuDicision to the data at the index number found in cpuOptions array calculated from cpuRandom calculation
             let cpuDecision = cpuOptions[cpuRandom];
             //returns cpu decision
-            console.log("cpuDecision = " + cpuDecision)
+            //console.log("cpuDecision = " + cpuDecision)
             return cpuDecision;
         }
         // Verifies cpuChoice is working correctly
         //console.log("The CPU choice is " + cpuChoice());
 
         function playRound (playerHand, cpuHand) {
-            let tie;
-            let winner;
-            console.log(playerHand + " " + cpuHand)
+
+            //console.log(playerHand + " " + cpuHand)
 
             if (playerHand === cpuHand) {
-                return tie = "It's a tie!" 
+                return tie;
             } else {
                 if (playerHand === rock) {
                     if (cpuHand === paper) {
-                        return winner = "CPU Wins!"
+                        computerScore++
+                        return cpuWin
                     } else {
-                        return winner = "Player Wins!"
+                        userScore++
+                        return youWin
                     }
                 } else if (playerHand === paper) {
                     if (cpuHand === scissors) {
-                        return winner = "CPU Wins!"
+                        computerScore++
+                        return cpuWin
                     } else {
-                        return winner = "Player wins!"
+                        userScore++
+                        return youWin
                     }
                 } else if (playerHand === scissors) {
                     if (cpuHand === rock) {
-                        return winner = "CPU Wins!"
+                        computerScore++
+                        return cpuWin
                     } else {
-                        return winner = "Player Wins!"
+                        userScore++
+                        return youWin
                     }
                 }
             }
         }
 
-        const cpuHand = cpuChoice();
-        const playerHand = playerChoice();
-        console.log(playRound(playerHand, cpuHand));
-
         // Compare CPU choise to user input
-            // If CPU === input return "Tie"
-            // If CPU === rock && input === paper return "You win!"
-            // if CPU === paper && input === scissors return "You win!"
-            // if CPU === scissors && input === rock return "You win!"
-            // else return "You lose"
+        for (let i = 0; i < 5; i++) {
+            const cpuHand = cpuChoice();
+            const playerHand = playerChoice();
+            if (playerHand === cpuHand) {
+                alert("Tie round!")
+                i--
+            } else {
+                console.log(playRound(playerHand, cpuHand));
+                console.log("your score = " + userScore);
+                console.log("Computer's score = " + computerScore);
+            }
+        }
 
-        // Make function that loops through the game 5 times
-            // record who wins each round
-            // declare winner by using highest value
-            // if result is "Tie" ignore result
     </script>
 </body>
 </html>
