@@ -1,131 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper, Scissors</title>
+  <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <script>
-        // Rock Papaer Scissors Game
-        
-        // Gives choice of Rock
-        let rock = "rock"
-        // Gives choice of Paper
-        let paper = "paper"
-        // Gives choice of Scissors
-        let scissors = "scissors"
-        // Gives game result options
-        let tie = "It's a tie!";
-        let youWin = "You win!";
-        let cpuWin = "You lose!";
-        // Variables to store both the player and CPU score during game
-        let userScore = 0;
-        let computerScore = 0;
-
-        function playerChoice() {
-            // Gives prompt for user to input their choice
-            let userChoice = prompt('Rock, Paper, or Scissors?');
-            // Sets user choice to lower case for consistancy in algorithm
-            let lowerUserChoice = userChoice.toLowerCase();
-
-            // Creates loop to iterate through prompt inputs to ensure they are valid for rock paper scissors
-            for (let j = 0; j < 1; j++) {
-                // If input is identical to rock, prints to console
-                if (lowerUserChoice === rock) {
-                //console.log("User choice is: " + lowerUserChoice);
-                // If input is identical to paper, prints to console
-                } else if (lowerUserChoice === paper) {
-                //console.log("User choice is: " + lowerUserChoice);
-                // If input is identical to scissors, prints to console
-                } else if (lowerUserChoice === scissors) {
-                //console.log("User choice is: " + lowerUserChoice);
-                // If input is not identical to rock, paper, or scissors user is reprompted to enter a valid choice
-                } else {
-                   lowerUserChoice = prompt("Invalid entry!  Try again");
-                    j--; // This sets the value of i in the for loop to -1, so when it i++ it still remains < 1.  This lets the loop repeat until a valid choice is entered.
-                }
-            }
-            //console.log("The valid user input is: "+ lowerUserChoice);
-            return lowerUserChoice;
-        }  
-        
-        // Make functions that randomly selects CPU choice
-        function cpuChoice () {
-            // Puts all choices into an array for random selection algorithm to be used
-            let cpuOptions = [rock, paper, scissors];
-            // Algorithm that finds a random index of any array using its length as the ceiling value to be multiplied to
-            let cpuRandom = Math.floor((Math.random() * cpuOptions.length));
-            // Sets the variable cpuDicision to the data at the index number found in cpuOptions array calculated from cpuRandom calculation
-            let cpuDecision = cpuOptions[cpuRandom];
-            //returns cpu decision
-            //console.log("cpuDecision = " + cpuDecision)
-            return cpuDecision;
-        }
-        // Verifies cpuChoice is working correctly
-        //console.log("The CPU choice is " + cpuChoice());
-
-        function playRound (playerHand, cpuHand) {
-
-            //console.log(playerHand + " " + cpuHand)
-
-            // Runs through all the possible input combinations to determine winner
-            if (playerHand === cpuHand) {
-                return tie;
-            } else {
-                if (playerHand === rock) {
-                    if (cpuHand === paper) {
-                        // Increases CPU score by 1
-                        computerScore++
-                        return cpuWin
-                    } else {
-                        // Increases players score by 1
-                        userScore++
-                        return youWin
-                    }
-                } else if (playerHand === paper) {
-                    if (cpuHand === scissors) {
-                        computerScore++
-                        return cpuWin
-                    } else {
-                        userScore++
-                        return youWin
-                    }
-                } else if (playerHand === scissors) {
-                    if (cpuHand === rock) {
-                        computerScore++
-                        return cpuWin
-                    } else {
-                        userScore++
-                        return youWin
-                    }
-                }
-            }
-        }
-
-        // Loop to run through 5 positive rounds of the game
-        for (let i = 0; i < 5; i++) {
-            // Runs the cpuChoice function
-            const cpuHand = cpuChoice();
-            // Runs the playerChoice function
-            const playerHand = playerChoice();
-            // Sets condition for tie games
-            if (playerHand === cpuHand) {
-                // Alerts player the round was a tie
-                alert("Tie round!")
-                // This lowers i loop by 1 for a net gain of +0 on tie games.  This lets the loop repeat until a sum of 5 wins/losses is recorded
-                i--
-            } else {
-                // Prints out the results of the round
-                console.log(playRound(playerHand, cpuHand));
-                // Prints out the players score
-                console.log("your score = " + userScore);
-                // Prints out the CPU score
-                console.log("Computer's score = " + computerScore);
-            }
-        }
-
-    </script>
+  <div style="margin-bottom: 20px">
+    <input type="button" value="rock"></input>
+    <input type="button" value="paper"></input>
+    <input type="button" value="scissors"></input>
+  </div>
+  <div id="result"></div>
+  <script src="rpsGame.js"></script>
 </body>
 </html>
